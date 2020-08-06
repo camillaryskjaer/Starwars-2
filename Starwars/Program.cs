@@ -20,6 +20,9 @@ namespace Starwars
 
             //---(Task 2)---
             Console.WriteLine("---(Task 2)---");
+            //Hvorfor ikke bare konvertere alt til lower case
+            List<Planet> planetsContainsY = new List<Planet>(from Planet in planets where Planet.Name.ToLowerCase().Contains("y") select Planet);
+        
             List<Planet> planetsContainsY = new List<Planet>(from Planet in planets where Planet.Name.Contains("y") || Planet.Name.Contains("Y") select Planet);
             PrintAllNames(planetsContainsY);
 
@@ -50,6 +53,16 @@ namespace Starwars
 
             //Task 8
             Console.WriteLine("---(Task 8)---");
+            //Dine linier bliver for lange, fordi du sætter hele udtrykket ind i initialiseringen!
+            //Så må du hellere bryde linien
+            List<Planet> PlanetswithRotation30SurfaceWater50andContainsbaSortedNameSurfacewaterRotationPeriod = new List<Planet>(
+                from Planet in planets where (Planet.RotationPeriod > 30 || Planet.SurfaceWater > 50) && Planet.Name.Contains("ba") 
+                orderby Planet.Name ascending, Planet.SurfaceWater ascending, Planet.RotationPeriod ascending 
+                select Planet
+            );
+           
+            
+            
             List<Planet> PlanetswithRotation30SurfaceWater50andContainsbaSortedNameSurfacewaterRotationPeriod = new List<Planet>(from Planet in planets where (Planet.RotationPeriod > 30 || Planet.SurfaceWater > 50) && Planet.Name.Contains("ba") orderby Planet.Name ascending, Planet.SurfaceWater ascending, Planet.RotationPeriod ascending select Planet);
             PrintAllNames(PlanetswithRotation30SurfaceWater50andContainsbaSortedNameSurfacewaterRotationPeriod);
 
